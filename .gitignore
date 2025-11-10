@@ -1,0 +1,126 @@
+# Environment
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# VIRTUAL ENVIRONMENTS
+.venv/
+env/
+venv/
+ENV/
+.python-version
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vim/
+.vimrc
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# Data & Logs
+logs/
+*.log
+data/documents/*.pdf
+data/documents/*.txt
+data/documents/*.docx
+!data/documents/.gitkeep
+data/embeddings/
+!data/embeddings/.gitkeep
+
+
+# VECTOR STORE & CHROMA DATABASE
+chroma_langchain_db/
+*.sqlite3
+*.sqlite
+*.db
+.chroma/
+
+# LANGCHAIN & LANGSMITH
+.langchain_cache/
+.langsmith_cache/
+.langgraph_cache/
+
+# TESTING & COVERAGE
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# NODEJS (if using any node tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS FILES
+Thumbs.db
+.DS_Store
+*.bak
+*.tmp
+.~*
+
+# PROJECT SPECIFIC
+# Temporary test files
+temp/
+tmp/
+*.tmp.*
+
+# Model cache/weights (if any)
+models/
+!models/.gitkeep
+
+# Credentials and config
+config/local_config.py
+config/.secrets.json
+
+# CHAINLIT
+# Chainlit cache and runtime files
+.chainlit/
+.chainlit_env
+chainlit.md
+.chainlit_session/
+.chainlit_logs/
+
+# Chainlit user data (if using database)
+.chainlit_data/
+chainlit_*.db
+
+# Chainlit build output
+.chainlit/build/

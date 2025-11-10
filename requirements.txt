@@ -1,0 +1,7 @@
+chainlit
+langchain
+langgraph
+langchain-google-genai
+langgraph-checkpoint-postgres
+psycopg2-binary
+pydantic
