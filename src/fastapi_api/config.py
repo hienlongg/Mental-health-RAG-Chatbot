@@ -1,15 +1,15 @@
-"""Flask configuration settings."""
+"""FastAPI configuration settings."""
 import os
 from pathlib import Path
 
 # Base configuration
 BASE_DIR = Path(__file__).parent.parent.parent
-DEBUG = os.getenv('FLASK_DEBUG', True)
-TESTING = os.getenv('FLASK_TESTING', False)
+DEBUG = os.getenv('FASTAPI_DEBUG', True)
+TESTING = os.getenv('FASTAPI_TESTING', False)
 
 # Server configuration
-FLASK_HOST = os.getenv('FLASK_HOST', '0.0.0.0')
-FLASK_PORT = int(os.getenv('FLASK_PORT', 5000))
+FASTAPI_HOST = os.getenv('FASTAPI_HOST', '0.0.0.0')
+FASTAPI_PORT = int(os.getenv('FASTAPI_PORT', 8000))
 
 # Upload configuration
 UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', os.path.join(BASE_DIR, 'data', 'documents'))

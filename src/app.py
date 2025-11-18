@@ -1,37 +1,51 @@
-"""Unified Flask + Chainlit Application
+"""Unified FastAPI + Chainlit Application
 
 This is the main entry point for the Psychology RAG Chatbot application.
 It combines:
-- Flask API: RESTful endpoints for RAG queries and document management
+- FastAPI: High-performance RESTful endpoints for RAG queries and document management
 - Chainlit UI: Interactive chat interface mounted at /rag
+
+Architecture:
+- API Routes: /health, /documents/*
+- Chainlit: Mounted at /rag with interactive chat interface
+- Vector Store: Chroma with persistent SQLite
+- LLM: Google Gemini (gemini-2.5-flash-lite)
 """
 
-from flask import Flask
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from chainlit.utils import mount_chainlit
-from flask_api.routes import health_bp, documents_bp
-from flask_api.utils.error_handler import register_error_handlers
+from fastapi_api.routes import health_router, documents_router
+from fastapi_api.utils.error_handler import register_error_handlers
 
 
 def create_app(config=None):
-    """Create and configure the unified Flask application.
+    """Create and configure the unified FastAPI application.
     
     Args:
         config: Optional configuration dictionary
         
     Returns:
-        Flask application instance with Chainlit mounted
+        FastAPI application instance with Chainlit mounted
     """
-    app = Flask(__name__)
+    app = FastAPI(
+        title="Psychology RAG Chatbot API",
+        description="RAG-powered API for psychology-informed support",
+        version="1.0.0"
+    )
     
-    # Configure app
-    if config:
-        app.config.update(config)
-    else:
-        app.config.from_object('flask_api.config')
+    # Add CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     
-    # Register blueprints for Flask API
-    app.register_blueprint(health_bp)
-    app.register_blueprint(documents_bp)
+    # Include routers
+    app.include_router(health_router)
+    app.include_router(documents_router)
     
     # Register error handlers
     register_error_handlers(app)
@@ -42,18 +56,24 @@ def create_app(config=None):
     return app
 
 
+# Create app instance
+app = create_app()
+
+
 if __name__ == '__main__':
-    app = create_app()
+    import uvicorn
     
     print("=" * 70)
-    print("Psychology RAG Chatbot - Unified Application")
+    print("Psychology RAG Chatbot - Unified FastAPI Application")
     print("=" * 70)
-    print("\n✓ Flask API initialized")
+    print("\n✓ FastAPI initialized")
     print("✓ Chainlit interface mounted at /rag")
     print("\nEndpoints available:")
-    print("  - API Health: http://localhost:5000/health")
-    print("  - Chainlit UI: http://localhost:5000/rag")
-    print("  - Document API: http://localhost:5000/documents/*")
+    print("  - API Health: http://localhost:8000/health")
+    print("  - API Status: http://localhost:8000/health/status")
+    print("  - Chainlit UI: http://localhost:8000/rag")
+    print("  - Document API: http://localhost:8000/documents/*")
+    print("  - API Docs: http://localhost:8000/docs")
     print("=" * 70 + "\n")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
