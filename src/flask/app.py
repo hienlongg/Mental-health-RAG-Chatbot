@@ -1,7 +1,8 @@
 """Main Flask application entry point."""
 from flask import Flask
-from src.flask.routes import health_bp, rag_bp, documents_bp
-from src.flask.utils.error_handler import register_error_handlers
+# from routes import health_bp, rag_bp, documents_bp
+from routes import health_bp, documents_bp
+from utils.error_handler import register_error_handlers
 
 
 def create_app(config=None):
@@ -19,11 +20,11 @@ def create_app(config=None):
     if config:
         app.config.update(config)
     else:
-        app.config.from_object('config.settings')
+        app.config.from_object('flask.config')
     
     # Register blueprints
     app.register_blueprint(health_bp)
-    app.register_blueprint(rag_bp)
+    # app.register_blueprint(rag_bp)
     app.register_blueprint(documents_bp)
     
     # Register error handlers
