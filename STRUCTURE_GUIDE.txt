@@ -1,0 +1,268 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      APP.PY STRUCTURE GUIDE                               ║
+║                  Psychology RAG Chatbot Code Organization                 ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📍 QUICK NAVIGATION
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Section             │ Lines  │ Purpose                                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 1. Module Doc       │ 1-14   │ Overview of the entire application          │
+│ 2. IMPORTS          │ 16-49  │ All library imports (std, 3rd-party, lang)  │
+│ 3. CONFIG & LOG     │ 52-80  │ Logging setup, environment validation       │
+│ 4. RAG INIT         │ 83-118 │ Initialize embeddings, model, vector store  │
+│ 5. DOC LOADING      │ 121-165│ Load PDFs, chunk, index (smart caching)    │
+│ 6. DATA PERSIST     │ 168-253│ Save/load chat, diagnosis, backend API      │
+│ 7. AGENT STATE      │ 256-334│ State schema, tools (retrieve, diagnose)    │
+│ 8. AGENT CREATE     │ 337-355│ SYSTEM_PROMPT, agent instantiation         │
+│ 9. CHAINLIT HNDLRS  │ 358-483│ Chat handlers (start, message, end)        │
+│ 10. ENTRY POINT     │ 486-532│ Main execution logic                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+🔍 FIND WHAT YOU NEED
+
+├─ To modify logging?
+│  └─→ Section 3: CONFIGURATION & LOGGING
+│      └─ Function: setup_logging()
+│
+├─ To add a new tool?
+│  └─→ Section 7: AGENT STATE & TOOLS
+│      └─ Add @tool decorated function
+│      └─ Add to tools list in Section 8
+│
+├─ To change the chat behavior?
+│  └─→ Section 9: CHAINLIT EVENT HANDLERS
+│      └─ on_chat_start() for session init
+│      └─ on_message() for processing
+│
+├─ To modify AI system prompt?
+│  └─→ Section 8: AGENT CREATION
+│      └─ Variable: SYSTEM_PROMPT
+│
+├─ To change storage logic?
+│  └─→ Section 6: DATA PERSISTENCE
+│      └─ Function: save_chat_history()
+│      └─ Function: load_chat_history()
+│
+├─ To adjust RAG components?
+│  └─→ Section 4: RAG COMPONENT INITIALIZATION
+│      └─ Function: initialize_embeddings()
+│      └─ Function: initialize_model()
+│      └─ Function: initialize_vector_store()
+│
+└─ To fix imports?
+   └─→ Section 2: IMPORTS
+       └─ Organize by type (std, 3rd-party, langchain)
+
+
+📊 SECTION DETAILS
+
+1️⃣  MODULE DOCSTRING (Lines 1-14)
+   ┌──────────────────────────────────┐
+   │ What it is: Overview & architecture
+   │ Key info:  LLM, embeddings, DB, UI
+   │ Modify?    When architecture changes
+   └──────────────────────────────────┘
+
+2️⃣  IMPORTS (Lines 16-49)
+   ┌──────────────────────────────────┐
+   │ Standard library (os, sys, uuid)
+   │ Third-party (dotenv, chainlit)
+   │ LangChain ecosystem imports
+   │ Keep organized by category!
+   └──────────────────────────────────┘
+
+3️⃣  CONFIGURATION & LOGGING (Lines 52-80)
+   ┌──────────────────────────────────┐
+   │ setup_logging()
+   │   └─ Creates .logs directory
+   │   └─ Configures file + console
+   │
+   │ load_environment()
+   │   └─ Validates API keys
+   │   └─ Returns (langsmith_key, google_key)
+   │
+   │ Module-level init:
+   │   └─ logger = setup_logging()
+   │   └─ LANGSMITH_API_KEY, GOOGLE_API_KEY
+   └──────────────────────────────────┘
+
+4️⃣  RAG INITIALIZATION (Lines 83-118)
+   ┌──────────────────────────────────┐
+   │ initialize_embeddings()
+   │   └─ Returns HuggingFaceEmbeddings
+   │   └─ Model: all-MiniLM-L6-v2
+   │
+   │ initialize_model()
+   │   └─ Returns ChatGoogleGenerativeAI
+   │   └─ Model: gemini-2.5-flash-lite
+   │
+   │ initialize_vector_store(embeddings)
+   │   └─ Returns Chroma instance
+   │   └─ Persists to .data/embeddings/...
+   │
+   │ Module-level instantiation:
+   │   └─ embeddings = initialize_embeddings()
+   │   └─ model = initialize_model()
+   │   └─ vector_store = initialize_vector_store()
+   └──────────────────────────────────┘
+
+5️⃣  DOCUMENT LOADING (Lines 121-165)
+   ┌──────────────────────────────────┐
+   │ load_and_index_documents()
+   │   ├─ Check if PDF exists
+   │   ├─ Smart caching (skip if indexed)
+   │   ├─ Load with PyPDFLoader
+   │   ├─ Chunk with RecursiveTextSplitter
+   │   └─ Index with vector_store.add_documents()
+   │
+   │ Called immediately:
+   │   └─ load_and_index_documents()
+   └──────────────────────────────────┘
+
+6️⃣  DATA PERSISTENCE (Lines 168-253)
+   ┌──────────────────────────────────┐
+   │ save_chat_history(user_id, ...)
+   │   └─ Saves to data/chats/*.json
+   │   └─ Includes messages + diagnosis
+   │
+   │ load_chat_history(user_id, ...)
+   │   └─ Loads from data/chats/*.json
+   │   └─ Returns (messages, diagnosis)
+   │
+   │ save_to_backend_api(thread_id, ...)
+   │   └─ ASYNC function
+   │   └─ Posts to Flask backend
+   │   └─ Saves conversation + diagnosis
+   └──────────────────────────────────┘
+
+7️⃣  AGENT STATE & TOOLS (Lines 256-334)
+   ┌──────────────────────────────────┐
+   │ PsychologyAgentState class
+   │   └─ user_id: str
+   │   └─ score: str
+   │   └─ content: str
+   │   └─ total_guess: str
+   │
+   │ @tool retrieve_context(query)
+   │   └─ Searches vector store
+   │   └─ Returns DSM-5 info
+   │
+   │ @tool update_diagnosis(score, ...)
+   │   └─ Saves diagnosis to session
+   │   └─ Logs assessment data
+   └──────────────────────────────────┘
+
+8️⃣  AGENT CREATION (Lines 337-355)
+   ┌──────────────────────────────────┐
+   │ SYSTEM_PROMPT = """..."""
+   │   └─ Vietnamese instructions
+   │   └─ 3 steps for agent behavior
+   │
+   │ tools = [retrieve_context, ...]
+   │   └─ List of available tools
+   │
+   │ checkpointer = InMemorySaver()
+   │   └─ Memory management
+   │
+   │ agent = create_agent(...)
+   │   └─ Full agent instantiation
+   └──────────────────────────────────┘
+
+9️⃣  CHAINLIT HANDLERS (Lines 358-483)
+   ┌──────────────────────────────────┐
+   │ @cl.on_chat_start
+   │   async def on_chat_start()
+   │     ├─ Create thread_id + user_id
+   │     ├─ Load chat history
+   │     ├─ Load previous diagnosis
+   │     └─ Send welcome message
+   │
+   │ @cl.on_message
+   │   async def on_message(message)
+   │     ├─ Get session info
+   │     ├─ Add to message history
+   │     ├─ Run agent.astream()
+   │     ├─ Stream response tokens
+   │     ├─ Save to file
+   │     └─ Save to backend API
+   │
+   │ @cl.on_chat_end
+   │   def on_chat_end()
+   │     └─ Log disconnection
+   └──────────────────────────────────┘
+
+🔟 ENTRY POINT (Lines 486-532)
+   ┌──────────────────────────────────┐
+   │ if __name__ == "__main__":
+   │   ├─ Print startup banner
+   │   ├─ Show startup instructions
+   │   └─ Display URL
+   │
+   │ Usage:
+   │   $ chainlit run src/app.py
+   └──────────────────────────────────┘
+
+
+🚀 QUICK REFERENCE
+
+Function Locations:
+  setup_logging()                 → Line 54
+  load_environment()              → Line 67
+  initialize_embeddings()         → Line 88
+  initialize_model()              → Line 95
+  initialize_vector_store()       → Line 102
+  load_and_index_documents()      → Line 123
+  save_chat_history()             → Line 170
+  load_chat_history()             → Line 190
+  save_to_backend_api()           → Line 207
+  PsychologyAgentState            → Line 258
+  retrieve_context()              → Line 263
+  update_diagnosis()              → Line 283
+  on_chat_start()                 → Line 360
+  on_message()                    → Line 385
+  on_chat_end()                   → Line 470
+
+Variables:
+  logger                          → Line 79
+  embeddings                      → Line 115
+  model                           → Line 116
+  vector_store                    → Line 117
+  tools                           → Line 339
+  checkpointer                    → Line 340
+  agent                           → Line 342
+  SYSTEM_PROMPT                   → Line 337
+
+
+✨ BEST PRACTICES
+
+1. Keep sections in order (don't mix them)
+2. Add new functions to appropriate sections
+3. Update module docstring if architecture changes
+4. Always use type hints
+5. Always add docstrings
+6. Always use logger instead of print
+7. Keep imports organized (std, 3rd-party, langchain)
+8. Use section comments for navigation
+
+
+📝 ADDING NEW FEATURES
+
+New Tool:
+  1. Add to AGENT STATE & TOOLS section
+  2. Decorate with @tool
+  3. Add to tools list in AGENT CREATION
+  
+New Handler:
+  1. Add to CHAINLIT EVENT HANDLERS section
+  2. Follow @cl.on_* pattern
+  
+New Config Option:
+  1. Update load_environment() in CONFIG section
+  2. Use throughout with os.getenv()
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║  Your code is now ORGANIZED, MAINTAINABLE, and PRODUCTION-READY! 🎉       ║
+╚════════════════════════════════════════════════════════════════════════════╝

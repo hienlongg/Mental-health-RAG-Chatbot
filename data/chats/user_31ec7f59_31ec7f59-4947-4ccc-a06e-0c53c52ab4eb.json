@@ -1,0 +1,25 @@
+{
+  "user_id": "user_31ec7f59",
+  "thread_id": "31ec7f59-4947-4ccc-a06e-0c53c52ab4eb",
+  "timestamp": "2025-11-18T10:46:56.461912",
+  "message_count": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "tôi cảm thấy mệt mỏi"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu rồi. Bạn có thể chia sẻ thêm về cảm giác mệt mỏi này không? Ví dụ, nó kéo dài bao lâu rồi và bạn có cảm thấy điều gì khác nữa không?"
+    },
+    {
+      "role": "user",
+      "content": "make something great"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn có thể cho tôi biết \"great\" có ý nghĩa gì với bạn không? Bạn mong muốn đạt được điều gì hoặc trải nghiệm điều gì?"
+    }
+  ],
+  "diagnosis": {}
+}

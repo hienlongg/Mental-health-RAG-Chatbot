@@ -1,10 +1,13 @@
 """RAG pipeline initialization and utilities."""
-from config.settings import get_settings
-from src.rag.loaders.pdf_loader import load_pdf_documents
-from src.rag.embeddings.vectorstore import initialize_embeddings, initialize_vector_store
+from rag.loaders.pdf_loader import load_pdf_documents
+from rag.embeddings.vectorstore import initialize_embeddings, initialize_vector_store
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import Optional
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class RAGPipeline:

@@ -1,0 +1,62 @@
+{
+  "user_id": "user_32f25450",
+  "thread_id": "32f25450-2b0f-4402-8aa3-e2c4a5faff01",
+  "timestamp": "2025-11-18T09:30:06.722757",
+  "message_count": 12,
+  "messages": [
+    {
+      "role": "user",
+      "content": "tôi cảm thấy mệt mỏi"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn có thể chia sẻ thêm về tình trạng mệt mỏi của mình không? Ví dụ, bạn đã cảm thấy như vậy trong bao lâu rồi và mức độ mệt mỏi của bạn là bao nhiêu theo thang điểm từ 1 đến 10?"
+    },
+    {
+      "role": "user",
+      "content": "7"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ. Bạn có gặp phải các triệu chứng nào khác đi kèm với tình trạng mệt mỏi này không, chẳng hạn như khó ngủ, chán ăn, hay cảm giác buồn bã, lo lắng kéo dài?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy khó ngủ"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi hiểu rằng bạn đang cảm thấy mệt mỏi và khó ngủ. Theo thang điểm bạn đưa ra, mức độ mệt mỏi của bạn là 7/10. Tình trạng này có thể ảnh hưởng đến sức khỏe tinh thần của bạn.\n\nĐể hiểu rõ hơn, bạn có thể cho tôi biết thêm về giấc ngủ của mình không? Ví dụ, bạn thường đi ngủ và thức dậy lúc mấy giờ? Bạn có gặp khó khăn khi đi vào giấc ngủ hay thức giấc giữa đêm không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi đi ngủ lúc 11h nhưng mãi đến 2h tôi mới có thể ngủ"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ thêm thông tin. Việc bạn đi ngủ lúc 11 giờ nhưng phải đến 2 giờ sáng mới ngủ được cho thấy bạn đang gặp khó khăn đáng kể trong việc đi vào giấc ngủ. Điều này chắc chắn góp phần làm bạn cảm thấy mệt mỏi.\n\nNgoài ra, bạn có cảm thấy lo lắng, bồn chồn hoặc có những suy nghĩ lặp đi lặp lại khiến bạn khó ngủ không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy lo lắng về đồ án trên trường"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu rồi. Cảm giác lo lắng về đồ án có thể gây ra căng thẳng và ảnh hưởng đến giấc ngủ của bạn, dẫn đến tình trạng mệt mỏi.\n\nDựa trên những chia sẻ của bạn, tôi đánh giá tình trạng sức khỏe tinh thần hiện tại của bạn ở mức **kém**.\n\nChúng ta có thể cùng nhau tìm hiểu thêm về các kỹ thuật giúp giảm lo âu và cải thiện giấc ngủ. Bạn có muốn tìm hiểu về chúng ngay bây giờ không?"
+    }
+  ],
+  "diagnosis": {
+    "score": "7",
+    "content": "Người dùng báo cáo mệt mỏi (7/10) và khó ngủ (đi ngủ lúc 11h, tới 2h mới ngủ được). Nguyên nhân được xác định là lo lắng về đồ án trên trường.",
+    "total_guess": "Triệu chứng ban đầu cho thấy có thể liên quan đến rối loạn giấc ngủ thứ phát do lo âu liên quan đến học tập.",
+    "timestamp": "2025-11-18T09:30:05.758715"
+  }
+}

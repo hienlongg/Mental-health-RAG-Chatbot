@@ -1,28 +1,28 @@
 """Vector store and embedding initialization."""
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from pathlib import Path
 from typing import Optional
 
 
-def initialize_embeddings(model: str = "models/gemini-embedding-001") -> GoogleGenerativeAIEmbeddings:
+def initialize_embeddings(model: str = "sentence-transformers/all-MiniLM-L6-v2") -> HuggingFaceEmbeddings:
     """
-    Initialize Google Generative AI embeddings.
+    Initialize HuggingFace embeddings.
     
     Args:
         model: Embedding model name
         
     Returns:
-        GoogleGenerativeAIEmbeddings instance
+        HuggingFaceEmbeddings instance
     """
-    embeddings = GoogleGenerativeAIEmbeddings(model=model)
+    embeddings = HuggingFaceEmbeddings(model_name=model)
     print(f"✓ Embeddings initialized: {model}")
     return embeddings
 
 
 def initialize_vector_store(
-    embeddings: GoogleGenerativeAIEmbeddings,
-    collection_name: str = "documents",
+    embeddings: HuggingFaceEmbeddings,
+    collection_name: str = "psychology_knowledge_base",
     persist_directory: Optional[str] = None
 ) -> Chroma:
     """
@@ -36,6 +36,9 @@ def initialize_vector_store(
     Returns:
         Chroma vector store instance
     """
+    if persist_directory is None:
+        persist_directory = ".data/embeddings/chroma_langchain_db"
+    
     if persist_directory:
         persist_directory = str(Path(persist_directory).resolve())
     
