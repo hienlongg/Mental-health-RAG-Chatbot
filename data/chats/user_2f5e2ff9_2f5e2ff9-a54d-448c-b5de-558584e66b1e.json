@@ -1,0 +1,58 @@
+{
+  "user_id": "user_2f5e2ff9",
+  "thread_id": "2f5e2ff9-a54d-448c-b5de-558584e66b1e",
+  "timestamp": "2025-11-17T17:06:27.199895",
+  "message_count": 11,
+  "messages": [
+    {
+      "role": "user",
+      "content": "tôi cảm thấy không muốn làm gì"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi hiểu rằng bạn đang cảm thấy không có động lực. Để hiểu rõ hơn về tình trạng của bạn, bạn có thể chia sẻ thêm về cảm giác này không? Ví dụ, cảm giác này kéo dài bao lâu rồi và nó ảnh hưởng đến cuộc sống hàng ngày của bạn như thế nào?"
+    },
+    {
+      "role": "user",
+      "content": "đã kéo dài 2 3 ngày hôm nay"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ. Ngoài cảm giác không muốn làm gì, bạn có cảm thấy buồn bã, trống rỗng, hay mệt mỏi không? Có điều gì đặc biệt xảy ra trong 2-3 ngày qua khiến bạn cảm thấy như vậy không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi không rõ, bỗng dưng tôi cảm thấy vậy"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu rằng đôi khi cảm giác này đến mà không rõ nguyên nhân. Để có thể hỗ trợ bạn tốt hơn, tôi cần thu thập thêm một chút thông tin. Bạn có gặp khó khăn trong việc ngủ hoặc ăn uống gần đây không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi ngủ ít hơn, ngủ sớm nhưng cũng dậy sớm"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã cung cấp thêm thông tin. Việc thay đổi giấc ngủ có thể ảnh hưởng đến tâm trạng. Bạn có cảm thấy lo lắng, bồn chồn, hay khó tập trung vào bất cứ điều gì không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy khó tập trung"
+    },
+    {
+      "role": "assistant",
+      "content": ""
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, dựa trên những chia sẻ của bạn, tôi nhận thấy rằng bạn đang trải qua một giai đoạn khá khó khăn. Cảm giác không muốn làm gì, thay đổi giấc ngủ và khó tập trung có thể là những dấu hiệu cần được quan tâm.\n\nHiện tại, tôi đánh giá tình trạng của bạn ở mức độ **kém**.\n\nTôi đề xuất bạn nên chia sẻ những điều này với người thân hoặc bạn bè mà bạn tin tưởng. Ngoài ra, việc tham khảo ý kiến của chuyên gia y tế hoặc nhà tâm lý sẽ giúp bạn có cái nhìn sâu sắc hơn và tìm ra hướng giải quyết phù hợp. Bạn có muốn tôi tìm kiếm thông tin về các chuyên gia tâm lý hoặc các nguồn hỗ trợ khác không?"
+    }
+  ],
+  "diagnosis": {
+    "score": "4",
+    "content": "Người dùng báo cáo cảm thấy không muốn làm gì trong 2-3 ngày. Người dùng cũng báo cáo ngủ ít hơn (ngủ sớm, dậy sớm) và gặp khó khăn trong việc tập trung.",
+    "total_guess": "Trầm cảm mức độ nhẹ",
+    "timestamp": "2025-11-17T17:06:26.085466"
+  }
+}

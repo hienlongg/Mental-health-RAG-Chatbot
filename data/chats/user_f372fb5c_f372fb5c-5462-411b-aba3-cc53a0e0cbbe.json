@@ -1,0 +1,25 @@
+{
+  "user_id": "user_f372fb5c",
+  "thread_id": "f372fb5c-5462-411b-aba3-cc53a0e0cbbe",
+  "timestamp": "2025-11-17T17:42:57.409267",
+  "message_count": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "chào bạn"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi có thể giúp gì cho bạn hôm nay?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy buồn ngủ"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn có thể chia sẻ thêm về cảm giác buồn ngủ của mình không? Ví dụ, bạn cảm thấy buồn ngủ vào thời điểm nào trong ngày, mức độ buồn ngủ ra sao, và nó có ảnh hưởng đến các hoạt động hàng ngày của bạn không?"
+    }
+  ],
+  "diagnosis": {}
+}
