@@ -1,0 +1,49 @@
+{
+  "user_id": "user_ba284036",
+  "thread_id": "ba284036-37eb-4bdb-9454-b515d4f1716f",
+  "timestamp": "2025-11-12T07:55:27.027293",
+  "message_count": 10,
+  "messages": [
+    {
+      "role": "user",
+      "content": "tôi cảm thấy chán nản"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu. Bạn cảm thấy chán nản trong bao lâu rồi? Có điều gì cụ thể khiến bạn cảm thấy như vậy không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cũng không rõ nhưng tôi có cảm giác tôi không muốn làm gì "
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu cảm giác đó. Ngoài việc không muốn làm gì, bạn có gặp khó khăn nào khác trong sinh hoạt hàng ngày không? Ví dụ như ăn uống, ngủ nghỉ, hay tập trung vào công việc?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy không muốn ăn, khi đói tôi cũng không muốn ăn lắm"
+    },
+    {
+      "role": "assistant",
+      "content": "Trong 2 tuần qua, bạn có thường xuyên cảm thấy buồn bã, trống rỗng hoặc tuyệt vọng không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy vô vị, ý là cuộc sống của tôi"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu. Cảm giác vô vị và không muốn làm gì có thể rất mệt mỏi. Bạn có gặp khó khăn trong việc cảm thấy vui vẻ hoặc hứng thú với những điều từng thích không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi có nghĩ đến nhưng tôi không muốn bắt đầu làm"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ. Tôi nghĩ tôi đã có đủ thông tin để đưa ra đánh giá ban đầu. Bạn có thể chờ một chút được không?"
+    }
+  ],
+  "diagnosis": {}
+}

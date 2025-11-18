@@ -16,6 +16,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import chainlit as cl
 from pydantic import BaseModel, Field
+import httpx  # Add this for HTTP requests
 
 # LangChain imports
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
@@ -306,6 +307,10 @@ async def on_chat_start():
     user_id = "user_" + thread_id[:8]
     cl.user_session.set("user_id", user_id)
     
+    # Try to get user session ID from request (passed by frontend in cookies)
+    user_session_id = cl.user_session.get("user_session_id")
+    logger.info(f"🔑 User Session ID: {user_session_id}")
+    
     # Try to load existing chat history
     message_history, diagnosis_data = load_chat_history(user_id, thread_id)
     if message_history:
@@ -336,6 +341,9 @@ async def on_message(message: cl.Message):
     thread_id = cl.user_session.get("thread_id")
     user_id = cl.user_session.get("user_id")
     message_history = cl.user_session.get("message_history")
+    
+    # Get user_id from session cookie (passed by frontend)
+    user_session_id = cl.user_session.get("user_session_id")
 
     # Add user message to history
     message_history.append({"role": "user", "content": message.content})
@@ -365,7 +373,6 @@ async def on_message(message: cl.Message):
         # Stream agent response - use "values" mode for actual state
         is_first_token = True
         async for event in agent.astream(inputs, config, stream_mode="values"):
-            # print(f"Event: {event} \n\n")
             # Get the last message from the agent
             last_message = event["messages"][-1]
 
@@ -383,7 +390,6 @@ async def on_message(message: cl.Message):
                         "content": last_message.content
                     })
 
-        # print(f"Message History: {message_history}")
         print()
 
         # Update message
@@ -395,6 +401,9 @@ async def on_message(message: cl.Message):
         # Save updated message history to disk with diagnosis
         cl.user_session.set("message_history", message_history)
         save_chat_history(user_id, thread_id, message_history, diagnosis_data)
+        
+        # 🔥 NEW: Save to MongoDB via Flask backend API
+        await save_to_backend_api(thread_id, message_history, diagnosis_data, user_session_id)
                 
     except Exception as e:
         logger.error(f"Error during agent execution: {e}", exc_info=True)
@@ -403,6 +412,67 @@ async def on_message(message: cl.Message):
         await cl.Message(
             content=f"Sorry, I encountered an error: {str(e)}\n\nPlease try again."
         ).send()
+
+async def save_to_backend_api(thread_id: str, message_history: list, diagnosis_data: dict, user_session_id: str = None):
+    """
+    Save conversation and diagnosis to Flask backend API
+    """
+    try:
+        # Only save if we have a user session ID (frontend provided it)
+        if not user_session_id:
+            logger.warning(f"⚠️  No user session ID, skipping backend save for thread: {thread_id}")
+            return
+        
+        backend_url = os.getenv("BACKEND_URL", "http://localhost:5000")
+        
+        # Prepare conversation data
+        conversation_data = {
+            "threadID": thread_id,
+            "messages": message_history
+        }
+        
+        # Save conversation
+        async with httpx.AsyncClient() as client:
+            try:
+                response = await client.post(
+                    f"{backend_url}/api/chatbot/save-conversation",
+                    json=conversation_data,
+                    cookies={"user_session_id": user_session_id},
+                    timeout=10.0
+                )
+                if response.status_code == 200:
+                    logger.info(f"✅ Conversation saved to backend: {thread_id}")
+                else:
+                    logger.warning(f"⚠️  Backend returned {response.status_code}: {response.text}")
+            except Exception as e:
+                logger.error(f"❌ Failed to save conversation to backend: {e}")
+        
+        # Save diagnosis if available
+        if diagnosis_data:
+            diagnosis_payload = {
+                "threadID": thread_id,
+                "score": diagnosis_data.get("score"),
+                "content": diagnosis_data.get("content"),
+                "totalGuess": diagnosis_data.get("total_guess")
+            }
+            
+            async with httpx.AsyncClient() as client:
+                try:
+                    response = await client.post(
+                        f"{backend_url}/api/chatbot/save-diagnosis",
+                        json=diagnosis_payload,
+                        cookies={"user_session_id": user_session_id},
+                        timeout=10.0
+                    )
+                    if response.status_code == 200:
+                        logger.info(f"✅ Diagnosis saved to backend: {thread_id}")
+                    else:
+                        logger.warning(f"⚠️  Backend returned {response.status_code}")
+                except Exception as e:
+                    logger.error(f"❌ Failed to save diagnosis to backend: {e}")
+                    
+    except Exception as e:
+        logger.error(f"Error in save_to_backend_api: {e}")
 
 @cl.on_chat_end
 def on_chat_end():

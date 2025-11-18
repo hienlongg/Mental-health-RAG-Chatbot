@@ -1,0 +1,66 @@
+{
+  "user_id": "user_7f0acffd",
+  "thread_id": "7f0acffd-d06b-48ee-bf59-e49c0342b5fa",
+  "timestamp": "2025-11-12T08:06:53.068028",
+  "message_count": 13,
+  "messages": [
+    {
+      "role": "user",
+      "content": "tôi cảm thấy muốn bắt đầu làm việc nhưng khi ngồi vào bàn tôi lại bị mất tập trung"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, cảm ơn bạn đã chia sẻ. Sự mất tập trung khi bắt đầu làm việc có thể gây khó chịu. Để hiểu rõ hơn, bạn có thể chia sẻ thêm về cảm giác này không?\n\n*   Cảm giác mất tập trung này diễn ra trong bao lâu rồi?\n*   Có yếu tố nào dường như làm tăng hoặc giảm sự mất tập trung không?\n*   Ngoài mất tập trung, bạn có gặp phải các triệu chứng nào khác không, ví dụ như lo lắng, buồn bã, hoặc khó ngủ?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy tôi không học được nhiều nên tôi cảm thấy chán nản"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ thêm. Cảm giác chán nản khi cảm thấy không học được nhiều là điều dễ hiểu.\n\nĐể tôi có thể hiểu rõ hơn tình hình của bạn, bạn có thể cho tôi biết thêm một chút không?\n\n*   Bạn thường cảm thấy chán nản vào những thời điểm nào trong ngày hoặc trong tuần?\n*   Có điều gì cụ thể khiến bạn cảm thấy mình \"không học được nhiều\" không? Ví dụ, bạn có gặp khó khăn trong việc tiếp thu kiến thức mới, hay cảm thấy kiến thức đó không hữu ích?\n*   Ngoài cảm giác chán nản và mất tập trung, bạn có nhận thấy những thay đổi nào khác trong tâm trạng, sở thích, hoặc các hoạt động hàng ngày của mình không?"
+    },
+    {
+      "role": "user",
+      "content": "mấy hôm nay tôi bắt đầu thực hiện đồ án và tôi thấy mình không năng suất lắm"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu rằng bạn đang cảm thấy không hài lòng về năng suất làm việc của mình với đồ án. Cảm giác này có thể làm tăng thêm sự chán nản.\n\nĐể tôi có thể hỗ trợ bạn tốt hơn, bạn có thể chia sẻ thêm về những điều sau không?\n\n*   Cụ thể thì bạn cảm thấy mình \"không năng suất lắm\" ở điểm nào trong quá trình làm đồ án? (Ví dụ: khó bắt đầu, hay trì hoãn, hay làm việc chậm, hay cảm thấy kết quả không đạt yêu cầu?)\n*   Bạn có cảm thấy áp lực về thời gian hay khối lượng công việc không?\n*   Ngoài việc cảm thấy không năng suất, bạn có gặp khó khăn gì khác trong quá trình làm đồ án hoặc trong cuộc sống hàng ngày không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi làm chậm và không đạt kết quả như mong muốn"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã chia sẻ. Việc làm chậm và cảm thấy kết quả không như mong muốn khi thực hiện đồ án có thể là một nguồn gốc của sự chán nản và mất tập trung.\n\nDựa trên những gì bạn chia sẻ, tôi có thể phác thảo một số thông tin ban đầu. Tuy nhiên, để có thể đưa ra đánh giá chính xác hơn, tôi cần thêm một vài thông tin chi tiết.\n\nHiện tại, tôi có thể nhận định rằng bạn đang trải qua các triệu chứng như:\n\n*   **Mất tập trung:** Khó khăn khi bắt đầu công việc và duy trì sự tập trung.\n*   **Chán nản:** Cảm giác không vui hoặc mất hứng thú, đặc biệt khi cảm thấy không học được nhiều.\n*   **Giảm năng suất:** Làm việc chậm và kết quả không đạt kỳ vọng.\n\nĐể đánh giá mức độ ảnh hưởng của những điều này đến sức khỏe tâm thần của bạn, bạn có thể cho tôi biết thêm về:\n\n1.  **Thời gian:** Tình trạng này đã kéo dài bao lâu rồi? (Ví dụ: vài ngày, vài tuần, hay lâu hơn?)\n2.  **Mức độ ảnh hưởng:** Những triệu chứng này ảnh hưởng đến các hoạt động khác trong cuộc sống của bạn như thế nào? (Ví dụ: ảnh hưởng đến giấc ngủ, ăn uống, các mối quan hệ xã hội, hoặc các sở thích khác?)\n3.  **Cường độ:** Nếu đánh giá mức độ chán nản hoặc mất tập trung của bạn trên thang điểm từ 1 đến 10 (1 là rất nhẹ, 10 là rất nặng), bạn sẽ cho điểm mấy?\n\nSau khi có thêm thông tin, tôi sẽ có thể sử dụng công cụ `update_diagnosis` để đưa ra đánh giá ban đầu."
+    },
+    {
+      "role": "user",
+      "content": "7 trên 10"
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã cung cấp thêm thông tin. Dựa trên chia sẻ của bạn về việc cảm thấy mất tập trung, chán nản, làm việc chậm, kết quả không như mong muốn, và mức độ ảnh hưởng là 7/10, tôi có thể đưa ra đánh giá ban đầu như sau."
+    },
+    {
+      "role": "assistant",
+      "content": "Cảm ơn bạn đã cung cấp thêm thông tin. Dựa trên chia sẻ của bạn, tôi đánh giá tình trạng tâm lý hiện tại của bạn ở mức **trung bình**, với các biểu hiện rõ rệt của sự suy giảm năng suất và tâm trạng tiêu cực liên quan đến công việc.\n\nCác triệu chứng bạn mô tả như mất tập trung, chán nản, làm việc chậm và cảm thấy kết quả không như mong đợi, cùng với việc bạn đánh giá mức độ ảnh hưởng là 7/10, cho thấy tình trạng này đang có tác động đáng kể đến bạn.\n\nĐể có thể hỗ trợ bạn tốt hơn, chúng ta có thể tìm hiểu sâu hơn về nguyên nhân gốc rễ của những cảm giác này và các giải pháp khả thi. Bạn có muốn tiếp tục chia sẻ hoặc tìm hiểu về các phương pháp cải thiện sự tập trung và năng suất không?"
+    },
+    {
+      "role": "user",
+      "content": "tôi không muốn chia sẻ nữa"
+    },
+    {
+      "role": "assistant",
+      "content": "Tôi hiểu. Cảm ơn bạn đã chia sẻ những gì bạn cảm thấy thoải mái. Sức khỏe tâm thần là một hành trình cá nhân và điều quan trọng là bạn cảm thấy an toàn và được hỗ trợ.\n\nNếu bạn thay đổi ý định hoặc có bất cứ điều gì khác muốn chia sẻ trong tương lai, tôi luôn ở đây để lắng nghe.\n\nTạm thời, tôi xin kết thúc buổi trao đổi hôm nay. Chúc bạn có những giây phút nghỉ ngơi và thư giãn."
+    }
+  ],
+  "diagnosis": {
+    "score": "7",
+    "content": "Người dùng báo cáo các triệu chứng mất tập trung, chán nản, làm việc chậm và kết quả không đạt mong muốn khi thực hiện đồ án. Mức độ ảnh hưởng được đánh giá là 7/10.",
+    "total_guess": "Tình trạng tâm lý trung bình, có dấu hiệu của sự suy giảm năng suất và tâm trạng tiêu cực liên quan đến công việc.",
+    "timestamp": "2025-11-12T08:06:19.080453"
+  }
+}

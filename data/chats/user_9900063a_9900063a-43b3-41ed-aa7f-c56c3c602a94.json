@@ -1,0 +1,25 @@
+{
+  "user_id": "user_9900063a",
+  "thread_id": "9900063a-43b3-41ed-aa7f-c56c3c602a94",
+  "timestamp": "2025-11-17T18:25:00.737898",
+  "message_count": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "chào bạn"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi có thể giúp gì cho bạn hôm nay?"
+    },
+    {
+      "role": "user",
+      "content": "tôi cảm thấy mệt mỏi"
+    },
+    {
+      "role": "assistant",
+      "content": "Bạn có thể chia sẻ thêm về cảm giác mệt mỏi của mình không? Ví dụ, cảm giác này kéo dài bao lâu rồi và nó ảnh hưởng đến cuộc sống hàng ngày của bạn như thế nào?"
+    }
+  ],
+  "diagnosis": {}
+}

@@ -1,0 +1,17 @@
+{
+  "user_id": "user_16de3bb8",
+  "thread_id": "16de3bb8-6d03-49ac-80f1-387df673e577",
+  "timestamp": "2025-11-17T18:05:51.099785",
+  "message_count": 2,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Chào bạn"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi có thể giúp gì cho bạn hôm nay?"
+    }
+  ],
+  "diagnosis": {}
+}

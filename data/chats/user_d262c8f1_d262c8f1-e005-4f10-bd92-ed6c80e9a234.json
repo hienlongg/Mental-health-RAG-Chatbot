@@ -1,0 +1,17 @@
+{
+  "user_id": "user_d262c8f1",
+  "thread_id": "d262c8f1-e005-4f10-bd92-ed6c80e9a234",
+  "timestamp": "2025-11-17T18:28:44.230263",
+  "message_count": 2,
+  "messages": [
+    {
+      "role": "user",
+      "content": "chảo bạn"
+    },
+    {
+      "role": "assistant",
+      "content": "Chào bạn, tôi có thể giúp gì cho bạn hôm nay?"
+    }
+  ],
+  "diagnosis": {}
+}
